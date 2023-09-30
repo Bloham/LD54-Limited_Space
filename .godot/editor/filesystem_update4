@@ -5,3 +5,4 @@ res://screen_size.tscn
 res://DataHandler.gd
 res://Item.gd
 res://item.tscn
+res://inventory.gd
