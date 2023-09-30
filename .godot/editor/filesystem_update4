@@ -1,5 +1,7 @@
 res://main.tscn
 res://inventory.tscn
 res://slot.tscn
-res://slot.gd
-res://inventory.gd
+res://screen_size.tscn
+res://DataHandler.gd
+res://Item.gd
+res://item.tscn

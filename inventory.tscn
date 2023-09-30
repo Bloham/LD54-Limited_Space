@@ -48,6 +48,7 @@ custom_minimum_size = Vector2(300, 50)
 layout_mode = 2
 size_flags_horizontal = 6
 size_flags_vertical = 4
+text = "Button"
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ColorRect/MarginContainer/VBoxContainer"]
 layout_mode = 2
