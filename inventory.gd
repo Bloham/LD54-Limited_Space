@@ -21,7 +21,13 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	if item_held:
+		if Input.is_action_just_pressed("mouse_rightclick"):
+			rotate_item()
+		
+		if Input.is_action_just_pressed("mouse_leftclick"):
+			place_item()
+		
 
 
 func create_slots():
@@ -88,3 +94,28 @@ func set_grids(a_Slot):
 func clear_grid():
 	for grid in grid_array:
 		grid.set_color(grid.States.DEFAULT)
+
+
+func rotate_item():
+	item_held.rotate_item()
+	clear_grid()
+	if current_slot:
+		_on_slot_mouse_entered(current_slot)
+
+
+func place_item():
+	if not can_place or not current_slot:
+		#add visual or audio cues that you cant place the item here
+		return
+		
+	var calculated_grid_id = current_slot.slot_ID + icon_ancor.x * col_count + icon_ancor.y
+	item_held._snap_to(grid_array[calculated_grid_id].global_position)
+	
+	item_held.grid_ancor = current_slot
+	for grid in item_held.item_grids:
+		var grid_to_check = current_slot.slot_ID + grid[0] + grid[1] * col_count
+		grid_array[grid_to_check].state = grid_array[grid_to_check].States.TAKEN
+		grid_array[grid_to_check].item_stored = item_held
+		
+	item_held = null
+	clear_grid()
