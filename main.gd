@@ -1,13 +1,14 @@
 extends Node2D
 
-@onready var ship0 = $"Ship4-24"
-@onready var ship1 = $"Ship2-8"
+@onready var ship0 = $"Path2D4-24/PathFollow2D4-24/Ship4-24"
+@onready var ship1 = $"Path2D2-8/PathFollow2D2-8/Ship2-8"
 @onready var item_scene = preload("res://item.tscn")
-
+@onready var pathShip0 = $"Path2D4-24/PathFollow2D4-24"
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	#spawnShip(ship0)
 	pass # Replace with function body.
 
 
@@ -39,4 +40,7 @@ func rotate_item():
 	ship0.clear_grid()
 	ship1.clear_grid()
 
-
+func spawnShip(shipType):
+	pathShip0.progress_ratio = 0
+	var new_ship = shipType.instantiate()
+	pathShip0.add_child(new_ship)

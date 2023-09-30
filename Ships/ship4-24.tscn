@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://ship.gd" id="1_wm7gn"]
 
 [node name="Ship4-24" type="Node2D"]
-position = Vector2(481, 276)
+rotation = 1.5708
 script = ExtResource("1_wm7gn")
 cargo_grid_colums = 4
 cargo_slots = 24

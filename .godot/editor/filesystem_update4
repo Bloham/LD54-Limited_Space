@@ -9,3 +9,4 @@ res://main.gd
 res://Ships/ship4-24.tscn
 res://ship.gd
 res://Ships/ship2-8.tscn
+res://autoPath.gd
