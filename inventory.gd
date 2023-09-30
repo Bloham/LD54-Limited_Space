@@ -23,11 +23,18 @@ func _ready():
 func _process(delta):
 	if item_held:
 		if Input.is_action_just_pressed("mouse_rightclick"):
-			rotate_item()
+			if scroll_container.get_global_rect().has_point(get_global_mouse_position()):
+				rotate_item()
 		
 		if Input.is_action_just_pressed("mouse_leftclick"):
-			place_item()
+			if scroll_container.get_global_rect().has_point(get_global_mouse_position()):
+				place_item()
 		
+	else:
+		if Input.is_action_just_pressed("mouse_leftclick"):
+			if scroll_container.get_global_rect().has_point(get_global_mouse_position()):
+				pick_item()
+				
 
 
 func create_slots():
@@ -119,3 +126,9 @@ func place_item():
 		
 	item_held = null
 	clear_grid()
+
+
+func pick_item():
+	if not current_slot or not current_slot.item_stored:
+		return
+		
