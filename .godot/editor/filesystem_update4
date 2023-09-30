@@ -1,8 +1,11 @@
+res://inventory.gd
 res://main.tscn
 res://inventory.tscn
 res://slot.tscn
 res://screen_size.tscn
-res://DataHandler.gd
-res://Item.gd
 res://item.tscn
-res://inventory.gd
+res://GameManager.gd
+res://main.gd
+res://Ships/ship4-24.tscn
+res://ship.gd
+res://Ships/ship2-8.tscn
