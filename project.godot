@@ -18,6 +18,10 @@ config/icon="res://icon.svg"
 
 DataHandler="*res://DataHandler.gd"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [input]
 
 mouse_rightclick={

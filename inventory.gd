@@ -15,7 +15,7 @@ var icon_ancor : Vector2
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	#the number of slots to instanciate
-	for i in range(96):
+	for i in range(35):
 		create_slots()
 
 

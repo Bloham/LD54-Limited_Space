@@ -1,11 +1,12 @@
-TextureRect
-CenterContainer
-Control
+AspectRatioContainer
+Sprite2D
 Panel
+CenterContainer
+TextureRect
+Control
 Container
 SubViewport
 SubViewportContainer
-AspectRatioContainer
 ColorRect
 GridContainer
 Button
