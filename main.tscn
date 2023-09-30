@@ -1,0 +1,32 @@
+[gd_scene load_steps=2 format=3 uid="uid://ce5dv6q8jwqje"]
+
+[ext_resource type="PackedScene" uid="uid://p63nh2qmvx4s" path="res://inventory.tscn" id="1_87sm2"]
+
+[node name="Main" type="Node2D"]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+size = Vector2i(2, 2)
+
+[node name="Inventory" parent="SubViewportContainer/SubViewport" instance=ExtResource("1_87sm2")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

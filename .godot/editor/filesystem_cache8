@@ -1,0 +1,16 @@
+ea4bc82a6ad023ab7ee23ee620429895
+::res://::1696059856
+icon.svg::CompressedTexture2D::4855047354974389387::1696053646::1696053649::1::::<><>::
+inventory.gd::GDScript::-1::1696057641::0::1::::<>Control<>::
+inventory.tscn::PackedScene::1118552066181589488::1696057978::0::1::::<><>::res://inventory.gd
+item_data.json::JSON::-1::1696059846::0::1::::<><>::
+main.tscn::PackedScene::5115749381663431766::1696057978::0::1::::<><>::uid://p63nh2qmvx4s::::res://inventory.tscn
+slot.gd::GDScript::-1::1696057579::0::1::::<>TextureRect<>::
+slot.tscn::PackedScene::8688709050509359261::1696057978::0::1::::<><>::uid://chl0cvbwn3utd::::res://Asset/Grid/Kachel.png<>res://slot.gd
+::res://Asset/::1696055403
+::res://Asset/Grid/::1696055471
+Kachel.png::CompressedTexture2D::5288394030107291145::1696055469::1696055471::1::::<><>::
+::res://Data/::1696059856
+::res://LD54-Limited_Space/::1696053783
+README.md::TextFile::-1::1696053783::0::1::::<><>::
+::res://Other/::1696055463
