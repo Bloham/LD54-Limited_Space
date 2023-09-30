@@ -132,3 +132,14 @@ func pick_item():
 	if not current_slot or not current_slot.item_stored:
 		return
 		
+	item_held = current_slot.item_stored
+	item_held.selected = true
+	
+	for grid in item_held.item_grids:
+		var grid_to_check = item_held.grid_ancor.slot_ID + grid[0] + grid[1] * col_count
+		grid_array[grid_to_check].state = grid_array[grid_to_check].States.FREE
+		grid_array[grid_to_check].item_stored = null
+		
+	check_slot_availability(current_slot)
+	set_grids.call_deferred(current_slot)
+	
