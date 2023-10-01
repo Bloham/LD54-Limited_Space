@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://b5gqxmmrbeam2"]
+[gd_scene load_steps=6 format=3 uid="uid://b5gqxmmrbeam2"]
 
 [ext_resource type="Texture2D" uid="uid://buaalqrqqiw0y" path="res://Asset/schiff4-24.png" id="1_63tii"]
 [ext_resource type="Script" path="res://ship.gd" id="1_wm7gn"]
+[ext_resource type="Texture2D" uid="uid://cnsdfcn2yra3w" path="res://Asset/sail.png" id="3_gjfl4"]
+[ext_resource type="Texture2D" uid="uid://7546hosyacea" path="res://Asset/mast.png" id="4_o24f3"]
+[ext_resource type="Texture2D" uid="uid://c05owbf30y13b" path="res://Asset/sailtrans.png" id="5_shct3"]
 
 [node name="Ship4-24" type="Node2D"]
 script = ExtResource("1_wm7gn")
@@ -38,3 +41,20 @@ size_flags_vertical = 6
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 4
+
+[node name="Sail" type="Sprite2D" parent="Sprite2D"]
+visible = false
+position = Vector2(-3, 33)
+scale = Vector2(1.65385, 1.65385)
+texture = ExtResource("3_gjfl4")
+
+[node name="Mast" type="Sprite2D" parent="Sprite2D"]
+visible = false
+position = Vector2(-7.62939e-06, -3)
+scale = Vector2(1.65385, 1.65385)
+texture = ExtResource("4_o24f3")
+
+[node name="SailTrans" type="Sprite2D" parent="Sprite2D"]
+position = Vector2(0, 45)
+scale = Vector2(2.08775, 2.08775)
+texture = ExtResource("5_shct3")

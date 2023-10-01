@@ -1,11 +1,31 @@
-[gd_scene load_steps=8 format=3 uid="uid://bt6tonwt5icjk"]
+[gd_scene load_steps=12 format=3 uid="uid://bt6tonwt5icjk"]
 
 [ext_resource type="Texture2D" uid="uid://kmjpd32wk6jp" path="res://Asset/Water.png" id="1_bpuit"]
 [ext_resource type="Script" path="res://main_menue.gd" id="1_rxm4a"]
 [ext_resource type="Texture2D" uid="uid://bp2u6mpmem26n" path="res://Asset/Pier.png" id="2_bcbyj"]
 [ext_resource type="PackedScene" uid="uid://cyexdtfvktt5s" path="res://Ships/dummyship.tscn" id="3_57mdu"]
+[ext_resource type="Texture2D" uid="uid://cabswc7jbkgb1" path="res://Asset/waves1.png" id="3_u064d"]
 [ext_resource type="Script" path="res://mainmenuepath.gd" id="3_voaj3"]
+[ext_resource type="Texture2D" uid="uid://rh6tp4qs6t3r" path="res://Asset/waves2.png" id="4_8o0ms"]
+[ext_resource type="Texture2D" uid="uid://dxod0igo54rou" path="res://Asset/waves3.png" id="5_n248d"]
 [ext_resource type="Theme" uid="uid://br4iiiw4brqs" path="res://main.tres" id="6_7rpjj"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tbrxl"]
+animations = [{
+"frames": [{
+"duration": 1.2,
+"texture": ExtResource("3_u064d")
+}, {
+"duration": 1.2,
+"texture": ExtResource("4_8o0ms")
+}, {
+"duration": 1.2,
+"texture": ExtResource("5_n248d")
+}],
+"loop": true,
+"name": &"default",
+"speed": 1.0
+}]
 
 [sub_resource type="Curve2D" id="Curve2D_uqu24"]
 _data = {
@@ -30,6 +50,11 @@ position = Vector2(577, 324)
 [node name="Water" type="Sprite2D" parent="Background"]
 position = Vector2(-1, 0)
 texture = ExtResource("1_bpuit")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Background/Water"]
+sprite_frames = SubResource("SpriteFrames_tbrxl")
+autoplay = "default"
+frame_progress = 0.563043
 
 [node name="Pier" type="Sprite2D" parent="Background"]
 position = Vector2(-1, 87)

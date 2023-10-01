@@ -14,6 +14,7 @@ var grid_array := []
 var icon_ancor : Vector2
 var col_count1 = 2
 
+
 func selfDestruction():
 	self.queue_free()
 

@@ -1,3 +1,5 @@
+Sprite2D
+AnimatedSprite2D
 Panel
 CenterContainer
 HSeparator
@@ -11,7 +13,6 @@ Path2D
 Button
 Node
 TextureButton
-Sprite2D
 Node2D
 ParallaxBackground
 PanelContainer
