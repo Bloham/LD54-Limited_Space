@@ -1,15 +1,18 @@
+Panel
+CenterContainer
+HSeparator
+MarginContainer
+VBoxContainer
+Label
+Control
 Timer
 PathFollow2D
 Path2D
-Panel
-MarginContainer
 Button
-CenterContainer
 Node
 TextureButton
 Sprite2D
 Node2D
-Control
 ParallaxBackground
 PanelContainer
 Container
@@ -21,4 +24,3 @@ SubViewportContainer
 ColorRect
 GridContainer
 ScrollContainer
-VBoxContainer

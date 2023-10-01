@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://ce5dv6q8jwqje"]
+[gd_scene load_steps=9 format=3 uid="uid://ce5dv6q8jwqje"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_xev1w"]
 [ext_resource type="Texture2D" uid="uid://kmjpd32wk6jp" path="res://Asset/Water.png" id="2_mirc3"]
 [ext_resource type="Texture2D" uid="uid://bp2u6mpmem26n" path="res://Asset/Pier.png" id="3_c65of"]
 [ext_resource type="Texture2D" uid="uid://bmo32kletboct" path="res://Asset/cargospot4-4.png" id="4_trtq0"]
+[ext_resource type="Theme" uid="uid://br4iiiw4brqs" path="res://main.tres" id="6_82jdv"]
 [ext_resource type="Script" path="res://ShipManager.gd" id="8_7mkrt"]
 
 [sub_resource type="Curve2D" id="Curve2D_8si4g"]
@@ -81,6 +82,117 @@ autostart = true
 wait_time = 11.0
 one_shot = true
 autostart = true
+
+[node name="UI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = 5.0
+offset_top = 2.0
+offset_right = 5.0
+offset_bottom = 2.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 546.0
+offset_top = 63.0
+offset_right = 592.0
+offset_bottom = 119.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer"]
+layout_mode = 2
+
+[node name="TitleScore" type="Label" parent="UI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme = ExtResource("6_82jdv")
+text = "Score"
+
+[node name="Score" type="Label" parent="UI/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+theme = ExtResource("6_82jdv")
+theme_override_font_sizes/font_size = 30
+text = "0"
+
+[node name="MarginContainer2" type="MarginContainer" parent="UI"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = 466.0
+offset_top = 371.0
+offset_right = 684.0
+offset_bottom = 544.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Panel" type="Panel" parent="UI/MarginContainer2"]
+layout_mode = 2
+theme = ExtResource("6_82jdv")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/MarginContainer2/Panel"]
+layout_mode = 2
+offset_right = 218.0
+offset_bottom = 173.0
+
+[node name="Instructions" type="Label" parent="UI/MarginContainer2/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme = ExtResource("6_82jdv")
+theme_override_font_sizes/font_size = 23
+text = "Instructions"
+
+[node name="HSeparator" type="HSeparator" parent="UI/MarginContainer2/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Help1" type="Label" parent="UI/MarginContainer2/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme = ExtResource("6_82jdv")
+text = "Click on the Cargo pannel to
+get cargo for the ship."
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="UI/MarginContainer2/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Help2" type="Label" parent="UI/MarginContainer2/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme = ExtResource("6_82jdv")
+text = "RIGHTCLICK to rotate Cargo."
+
+[node name="CenterContainer2" type="CenterContainer" parent="UI/MarginContainer2/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Help3" type="Label" parent="UI/MarginContainer2/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme = ExtResource("6_82jdv")
+text = "The game has no END"
 
 [connection signal="pressed" from="Habour/TextureButton" to="." method="_on_button_spawn_pressed"]
 [connection signal="newShipHasSpawned" from="ShipManager" to="." method="_on_ship_manager_new_ship_has_spawned"]

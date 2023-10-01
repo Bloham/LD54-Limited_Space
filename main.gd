@@ -4,6 +4,7 @@ extends Node2D
 
 @onready var leftLine = $ShipManager/LeftPort/Path2D/PathFollow2D
 @onready var rightLine = $ShipManager/RightPort/Path2D/PathFollow2D
+@onready var scoreLable = %Score
 
 
 @onready var leftShip = null
@@ -33,6 +34,9 @@ func _process(delta):
 			if leftShip != null:
 				if leftShip.rotateContainer.get_global_rect().has_point(get_global_mouse_position()):
 					leftShip.place_item()
+					GameManager.points += 5
+					scoreLable.text = str(GameManager.points)
+					print(GameManager.points)
 			
 			if rightShip != null:
 				if rightShip.rotateContainer.get_global_rect().has_point(get_global_mouse_position()):

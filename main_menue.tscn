@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://bt6tonwt5icjk"]
+[gd_scene load_steps=8 format=3 uid="uid://bt6tonwt5icjk"]
 
 [ext_resource type="Texture2D" uid="uid://kmjpd32wk6jp" path="res://Asset/Water.png" id="1_bpuit"]
 [ext_resource type="Script" path="res://main_menue.gd" id="1_rxm4a"]
 [ext_resource type="Texture2D" uid="uid://bp2u6mpmem26n" path="res://Asset/Pier.png" id="2_bcbyj"]
 [ext_resource type="PackedScene" uid="uid://cyexdtfvktt5s" path="res://Ships/dummyship.tscn" id="3_57mdu"]
 [ext_resource type="Script" path="res://mainmenuepath.gd" id="3_voaj3"]
+[ext_resource type="Theme" uid="uid://br4iiiw4brqs" path="res://main.tres" id="6_7rpjj"]
 
 [sub_resource type="Curve2D" id="Curve2D_uqu24"]
 _data = {
@@ -61,7 +62,7 @@ grow_vertical = 2
 
 [node name="Button" type="Button" parent="MarginContainer"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 40
+theme = ExtResource("6_7rpjj")
 text = "Start Game"
 
 [connection signal="pressed" from="MarginContainer/Button" to="." method="_on_button_pressed"]

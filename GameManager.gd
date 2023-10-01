@@ -6,6 +6,10 @@ var current_slot = null
 var can_place := false
 
 var speed = 0.05
+var points = 0
+
+var shipTooEmpty = false
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

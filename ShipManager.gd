@@ -52,7 +52,6 @@ func _process(delta):
 	moveShip(delta)
 
 
-
 func moveShip(delta):
 	if rightPathFollow.progress_ratio <= rightHanborStoppingPoint && rightLineTaken == true:
 		rightPathFollow.progress_ratio += rightSpeed * delta
