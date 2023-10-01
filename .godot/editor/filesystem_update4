@@ -1,12 +1,10 @@
-res://inventory.gd
 res://main.tscn
-res://inventory.tscn
+res://Ships/ship4-24.tscn
 res://slot.tscn
 res://screen_size.tscn
 res://item.tscn
-res://GameManager.gd
-res://main.gd
-res://Ships/ship4-24.tscn
-res://ship.gd
 res://Ships/ship2-8.tscn
 res://autoPath.gd
+res://main.gd
+res://ship.gd
+res://ShipManager.gd

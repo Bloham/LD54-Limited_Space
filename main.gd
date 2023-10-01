@@ -1,30 +1,30 @@
 extends Node2D
 
-@onready var ship0 = $"Path2D4-24/PathFollow2D4-24/Ship4-24"
-@onready var ship1 = $"Path2D2-8/PathFollow2D2-8/Ship2-8"
 @onready var item_scene = preload("res://item.tscn")
-@onready var pathShip0 = $"Path2D4-24/PathFollow2D4-24"
 
+@onready var leftLine = $ShipManager/LeftPort/Path2D/PathFollow2D
+@onready var rightLine = $ShipManager/RightPort/Path2D/PathFollow2D
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	#spawnShip(ship0)
-	pass # Replace with function body.
+@onready var leftShip = $ShipManager/DummyBoats/LeftShipDummy
+@onready var rightShip = $ShipManager/DummyBoats/RightShipDummy
+
+var leftShipTaken = false
+var rightShipTaken = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if GameManager.item_held:
 		if Input.is_action_just_pressed("mouse_rightclick"):
-			if ship0.rotateContainer.get_global_rect().has_point(get_global_mouse_position()) or ship1.rotateContainer.get_global_rect().has_point(get_global_mouse_position()):
+			if leftShip.rotateContainer.get_global_rect().has_point(get_global_mouse_position()) or rightShip.rotateContainer.get_global_rect().has_point(get_global_mouse_position()):
 				rotate_item()
 		
 		if Input.is_action_just_pressed("mouse_leftclick"):
-			if ship0.rotateContainer.get_global_rect().has_point(get_global_mouse_position()):
-				ship0.place_item()
+			if leftShip.rotateContainer.get_global_rect().has_point(get_global_mouse_position()):
+				leftShip.place_item()
 			
-			if ship1.rotateContainer.get_global_rect().has_point(get_global_mouse_position()):
-				ship1.place_item()
+			if rightShip.rotateContainer.get_global_rect().has_point(get_global_mouse_position()):
+				rightShip.place_item()
 
 
 func _on_button_spawn_pressed() -> void:
@@ -37,10 +37,18 @@ func _on_button_spawn_pressed() -> void:
 
 func rotate_item():
 	GameManager.item_held.rotate_item()
-	ship0.clear_grid()
-	ship1.clear_grid()
+	leftShip.clear_grid()
+	rightShip.clear_grid()
 
-func spawnShip(shipType):
-	pathShip0.progress_ratio = 0
-	var new_ship = shipType.instantiate()
-	pathShip0.add_child(new_ship)
+
+func _on_ship_manager_new_ship_has_spawned(newShip, shipLane):
+	print("New Ship Registered: ", newShip, " on lane: ", shipLane)
+	if shipLane == leftLine:
+		leftShip = newShip
+		leftShipTaken = true
+		print("Left Ship Taken: ", leftShipTaken)
+	else:
+		rightShip = newShip
+		rightShipTaken = true
+		print("Right Ship Taken: ", rightShipTaken)
+	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://ce5dv6q8jwqje"]
+[gd_scene load_steps=11 format=3 uid="uid://ce5dv6q8jwqje"]
 
 [ext_resource type="Script" path="res://main.gd" id="1_xev1w"]
 [ext_resource type="Texture2D" uid="uid://kmjpd32wk6jp" path="res://Asset/Water.png" id="2_mirc3"]
@@ -7,18 +7,19 @@
 [ext_resource type="Script" path="res://autoPath.gd" id="5_86sgk"]
 [ext_resource type="PackedScene" uid="uid://d4nuffg57mf05" path="res://Ships/ship2-8.tscn" id="6_sy70h"]
 [ext_resource type="PackedScene" uid="uid://b5gqxmmrbeam2" path="res://Ships/ship4-24.tscn" id="6_xa2lf"]
+[ext_resource type="Script" path="res://ShipManager.gd" id="8_7mkrt"]
 
 [sub_resource type="Curve2D" id="Curve2D_8si4g"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -403, 778, -113.622, 2.25208, 113.622, -2.25208, -312, 303, 4.23785, 248.394, -4.23785, -248.394, 266, 137, 0, 0, 0, 0, -64, -613)
+"points": PackedVector2Array(4.23785, 248.394, 0, 0, -276.134, 108.38, 0, 0, 0, 0, 202.556, 170.167, 0, 0, 0, 0, 76.175, -591.533)
 }
-point_count = 4
+point_count = 3
 
 [sub_resource type="Curve2D" id="Curve2D_b2wix"]
 _data = {
-"points": PackedVector2Array(-1.41262, 9.88832, 1.41262, -9.88832, 1818, 565, 264.159, -98.8832, -264.159, 98.8832, 1409, 429, 1.41262, 210.48, -1.41262, -210.48, 701, 349, 0, 0, 0, 0, 1547, -240)
+"points": PackedVector2Array(-1.41262, 9.88832, 1.41262, -9.88832, 1277, 402, 0, 0, 0, 0, 704, 377, 0, 0, 0, 0, 741, -386)
 }
-point_count = 4
+point_count = 3
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_xev1w")
@@ -44,35 +45,71 @@ offset_bottom = 327.0
 texture_normal = ExtResource("4_trtq0")
 
 [node name="Path2D4-24" type="Path2D" parent="."]
+visible = false
 position = Vector2(50, 161)
 curve = SubResource("Curve2D_8si4g")
 
 [node name="PathFollow2D4-24" type="PathFollow2D" parent="Path2D4-24"]
-position = Vector2(-403, 778)
-rotation = -1.38151
+position = Vector2(-276.134, 108.38)
+rotates = false
 script = ExtResource("5_86sgk")
-hanborStoppingPoint = 0.587
+hanborStoppingPoint = 0.389
 
 [node name="Timer" type="Timer" parent="Path2D4-24/PathFollow2D4-24"]
 
 [node name="Ship4-24" parent="Path2D4-24/PathFollow2D4-24" instance=ExtResource("6_xa2lf")]
 
 [node name="Path2D2-8" type="Path2D" parent="."]
+visible = false
 position = Vector2(75, -30)
 curve = SubResource("Curve2D_b2wix")
 
 [node name="PathFollow2D2-8" type="PathFollow2D" parent="Path2D2-8"]
-position = Vector2(701.529, 339.187)
-rotation = -1.45874
-progress = 1273.59
+position = Vector2(1277, 402)
+rotates = false
 script = ExtResource("5_86sgk")
 habourTime = 5
-hanborStoppingPoint = 0.549
+hanborStoppingPoint = 0.426
 
 [node name="Timer" type="Timer" parent="Path2D2-8/PathFollow2D2-8"]
 
-[node name="Ship2-8" parent="Path2D2-8/PathFollow2D2-8" instance=ExtResource("6_sy70h")]
-rotation = 1.4289
+[node name="Ship4-24" parent="Path2D2-8/PathFollow2D2-8" instance=ExtResource("6_sy70h")]
+
+[node name="ShipManager" type="Node" parent="."]
+script = ExtResource("8_7mkrt")
+
+[node name="LeftPort" type="Node" parent="ShipManager"]
+
+[node name="Path2D" type="Path2D" parent="ShipManager/LeftPort"]
+position = Vector2(50, 161)
+curve = SubResource("Curve2D_8si4g")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="ShipManager/LeftPort/Path2D"]
+position = Vector2(-276.134, 108.38)
+rotates = false
+
+[node name="Timer" type="Timer" parent="ShipManager/LeftPort"]
+
+[node name="RightPort" type="Node" parent="ShipManager"]
+
+[node name="Path2D" type="Path2D" parent="ShipManager/RightPort"]
+position = Vector2(75, -30)
+curve = SubResource("Curve2D_b2wix")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="ShipManager/RightPort/Path2D"]
+position = Vector2(1277, 402)
+rotates = false
+
+[node name="Timer" type="Timer" parent="ShipManager/RightPort"]
+
+[node name="DummyBoats" type="Node" parent="ShipManager"]
+
+[node name="LeftShipDummy" parent="ShipManager/DummyBoats" instance=ExtResource("6_sy70h")]
+position = Vector2(341, 1560)
+
+[node name="RightShipDummy" parent="ShipManager/DummyBoats" instance=ExtResource("6_xa2lf")]
+position = Vector2(592, 1555)
 
 [connection signal="pressed" from="Habour/TextureButton" to="." method="_on_button_spawn_pressed"]
 [connection signal="timeout" from="Path2D4-24/PathFollow2D4-24/Timer" to="Path2D4-24/PathFollow2D4-24" method="_on_timer_timeout"]
+[connection signal="newShipHasSpawned" from="ShipManager" to="." method="_on_ship_manager_new_ship_has_spawned"]
