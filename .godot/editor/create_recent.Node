@@ -1,3 +1,5 @@
+RichTextLabel
+Control
 Sprite2D
 AnimatedSprite2D
 Panel
@@ -6,7 +8,6 @@ HSeparator
 MarginContainer
 VBoxContainer
 Label
-Control
 Timer
 PathFollow2D
 Path2D

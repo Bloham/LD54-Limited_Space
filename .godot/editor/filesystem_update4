@@ -5,3 +5,8 @@ res://Ships/ship2-8.tscn
 res://main_menue.tscn
 res://Ships/dummyship.tscn
 res://ship.gd
+res://Item.gd
+res://main.gd
+res://slot.gd
+res://ShipManager.gd
+res://GameManager.gd

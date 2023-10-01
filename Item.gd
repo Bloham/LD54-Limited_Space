@@ -12,7 +12,7 @@ var grid_ancor = null
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if selected:
-		global_position = lerp(global_position, get_global_mouse_position(), 25 * delta)
+		global_position = lerp(global_position, get_global_mouse_position(), 100 * delta)
 
 
 func load_item(a_ItemID : int) -> void:
@@ -26,6 +26,7 @@ func load_item(a_ItemID : int) -> void:
 
 
 func rotate_item():
+	#print("GRID: ", item_grids)
 	for grid in item_grids:
 		var temp_y = grid[0]
 		grid[0] = -grid[1]
@@ -43,6 +44,6 @@ func _snap_to(destination:Vector2):
 		var temp_xy_switch = Vector2(IconRect_path.size.y, IconRect_path.size.x)
 		destination += temp_xy_switch/2
 	
-	tween.tween_property(self, "global_position", destination, 0.15).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(self, "global_position", destination, 0.05).set_trans(Tween.TRANS_SINE)
 	selected = false
 	

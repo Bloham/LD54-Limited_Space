@@ -115,7 +115,7 @@ func move_node(node, new_parent): # node - the node that you want to move, new_p
 	new_parent.add_child(node) # Add node to new parent as a child   
 
 func newShipSpawn():
-	print("Spawning new Ship")
+	#print("Spawning new Ship")
 	if ship0counter >= ship1counter:
 		newShip = ship1resource
 		ship1counter += 1
@@ -123,7 +123,7 @@ func newShipSpawn():
 		newShip = ship0resource
 		ship0counter += 1
 
-	print("Ship Counter 0: ", ship0counter, " Ship Counter 1: ", ship1counter)
+	#print("Ship Counter 0: ", ship0counter, " Ship Counter 1: ", ship1counter)
 
 	if leftLineTaken == false:
 		leftLineTaken = true

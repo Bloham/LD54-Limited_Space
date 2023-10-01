@@ -16,9 +16,9 @@ func set_color(a_state = States.DEFAULT) -> void:
 		States.DEFAULT:
 			filter.color = Color(Color.WHITE, 0.0)
 		States.TAKEN:
-			filter.color = Color(Color.RED, 0.2)
+			filter.color = Color(Color.RED, 0.1)
 		States.FREE:
-			filter.color = Color(Color.GREEN, 0.2)
+			filter.color = Color(Color.SEA_GREEN, 0.2)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

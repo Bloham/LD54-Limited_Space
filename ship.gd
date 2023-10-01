@@ -14,8 +14,11 @@ var grid_array := []
 var icon_ancor : Vector2
 var col_count1 = 2
 
+var itemsPlaced = 0
 
 func selfDestruction():
+	if itemsPlaced <= 0:
+		GameManager.shipTooEmpty = true
 	self.queue_free()
 
 # Called when the node enters the scene tree for the first time.
@@ -23,6 +26,8 @@ func _ready():
 	grid_container1.columns = cargo_grid_colums
 	col_count1 = cargo_grid_colums
 	innantiate_ship1()
+	itemsPlaced -= cargo_slots * 0.3
+	print("Items Placed: ", itemsPlaced)
 
 
 func innantiate_ship1():
@@ -64,6 +69,7 @@ func check_slot_availability_left(a_Slot) -> void:
 			GameManager.can_place = false
 			return
 	GameManager.can_place = true
+	#print("FREE SLOTS: ", a_Slot)
 
 func set_grids_left(a_Slot):
 	for grid in GameManager.item_held.item_grids:
@@ -106,7 +112,10 @@ func place_item():
 		grid_array[grid_to_check].item_stored = GameManager.item_held
 		
 	GameManager.item_held = null
+	itemsPlaced += 1
 	clear_grid()
+	#print("GRID ARRAY: ", grid_array.size())
+
 
 
 func pick_item():
