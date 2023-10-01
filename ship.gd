@@ -9,17 +9,20 @@ extends Node2D
 @export var cargo_grid_colums = 2
 @export var cargo_slots = 4
 
-
 var grid_array := []
 #var can_place := false
 var icon_ancor : Vector2
 var col_count1 = 2
+
+func selfDestruction():
+	self.queue_free()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	grid_container1.columns = cargo_grid_colums
 	col_count1 = cargo_grid_colums
 	innantiate_ship1()
+
 
 func innantiate_ship1():
 	for i in range(cargo_slots):

@@ -16,20 +16,19 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if self.progress_ratio <= hanborStoppingPoint:
+		self.progress_ratio += GameManager.speed * delta
+	if cargoHasExchanged == true:
+		self.progress_ratio += GameManager.speed * delta
+	if shipAtHabour == true:
+		return
 	if shipAtHabour == false:
-		moveShip(delta)
-
-
-func moveShip(delta):
-	self.progress_ratio += GameManager.speed * delta
-	if self.progress_ratio > hanborStoppingPoint && cargoHasExchanged == false:
 		shipAtHabour = true
 		timer.start()
-		print("Habor Timer Ship 4-24 Started")
-
+		print("Schiff im Hafen!")
+		
 
 func _on_timer_timeout():
 	shipAtHabour = false
 	cargoHasExchanged = true
-	timer.stop()
-	print("die reise geht weiter")
+	print("Die reise geht weiter")

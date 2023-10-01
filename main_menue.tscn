@@ -1,0 +1,67 @@
+[gd_scene load_steps=7 format=3 uid="uid://bt6tonwt5icjk"]
+
+[ext_resource type="Texture2D" uid="uid://kmjpd32wk6jp" path="res://Asset/Water.png" id="1_bpuit"]
+[ext_resource type="Script" path="res://main_menue.gd" id="1_rxm4a"]
+[ext_resource type="Texture2D" uid="uid://bp2u6mpmem26n" path="res://Asset/Pier.png" id="2_bcbyj"]
+[ext_resource type="PackedScene" uid="uid://cyexdtfvktt5s" path="res://Ships/dummyship.tscn" id="3_57mdu"]
+[ext_resource type="Script" path="res://mainmenuepath.gd" id="3_voaj3"]
+
+[sub_resource type="Curve2D" id="Curve2D_uqu24"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, -669, 224, -347.112, -20.1071, 347.112, 20.1071, 100.5, -276.5, 0, 0, 0, 0, 1106, 205)
+}
+point_count = 3
+
+[node name="MainMenue" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_rxm4a")
+
+[node name="Background" type="Node2D" parent="."]
+position = Vector2(577, 324)
+
+[node name="Water" type="Sprite2D" parent="Background"]
+position = Vector2(-1, 0)
+texture = ExtResource("1_bpuit")
+
+[node name="Pier" type="Sprite2D" parent="Background"]
+position = Vector2(-1, 87)
+texture = ExtResource("2_bcbyj")
+
+[node name="Path2D" type="Path2D" parent="Background"]
+position = Vector2(-127, 3)
+curve = SubResource("Curve2D_uqu24")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Background/Path2D"]
+position = Vector2(-669, 224)
+rotation = -0.576672
+script = ExtResource("3_voaj3")
+
+[node name="Ship4-24" parent="Background/Path2D/PathFollow2D" instance=ExtResource("3_57mdu")]
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -112.5
+offset_top = -31.5
+offset_right = 112.5
+offset_bottom = 31.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="MarginContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Start Game"
+
+[connection signal="pressed" from="MarginContainer/Button" to="." method="_on_button_pressed"]

@@ -8,3 +8,8 @@ res://autoPath.gd
 res://main.gd
 res://ship.gd
 res://ShipManager.gd
+res://main_menue.tscn
+res://Ships/dummyship.tscn
+res://mainmenuepath.gd
+res://main_menue.gd
+res://GameManager.gd
